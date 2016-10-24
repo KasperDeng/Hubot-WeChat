@@ -26,7 +26,7 @@ http_request = (options , params , callback) ->
     client = http
     data = new Buffer jsons params, 'utf8'
     options.headers["Content-Type"] = config.contentType
-    options.headers["Content-Length"] = data.byteLength
+    options.headers["Content-Length"] = Buffer.byteLength data.toString(), 'utf8'
     options.headers["Connection"] = config.connection
   if params and options.method == "GET"
     query = querystring.stringify params
